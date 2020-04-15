@@ -13,7 +13,7 @@ public:
 	HumanPlayer(std::istream& inParam, std::ostream& out);
 
 	virtual const char *describeSelf() const override;
-	virtual unsigned getNumberMatches(unsigned currentMatches) override;
+	virtual unsigned getNumberMatches(unsigned currentMatches, unsigned maxMatches) override;
 };
 
 #endif // HUMANPLAYER_HPP

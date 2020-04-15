@@ -8,11 +8,11 @@ RandomAIPlayer::RandomAIPlayer()
 
 const char *RandomAIPlayer::describeSelf() const
 {
-	return "AI";
+	return "Random AI";
 }
 
-unsigned RandomAIPlayer::getNumberMatches([[maybe_unused]] unsigned currentMatches)
+unsigned RandomAIPlayer::getNumberMatches([[maybe_unused]] unsigned currentMatches, unsigned maxMatches)
 {
-	std::uniform_int_distribution<unsigned> dist{1, 3};
+	std::uniform_int_distribution<unsigned> dist{1, maxMatches};
 	return dist(this->randomEngine);
 }

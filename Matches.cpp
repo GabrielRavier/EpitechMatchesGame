@@ -6,8 +6,8 @@
 #include <utility>
 #include "Helpers/Enumerator.hpp"
 
-Matches::Matches(unsigned paramMatches, std::ostream& paramOut)
-	: currentMatches{paramMatches}, out{paramOut}
+Matches::Matches(unsigned paramMatches, unsigned paramMaxMatchesPerTurn, std::ostream& paramOut)
+	: currentMatches{paramMatches}, maxMatchesPerTurn{paramMaxMatchesPerTurn}, out{paramOut}
 {
 	this->result.isFinished = false;
 }
@@ -40,7 +40,7 @@ void Matches::doTurn()
 			break;
 
 		this->out << fmt::format("It's {}'s turn\n", this->describePlayer(index));
-		this->processPlayerMatches(player->getNumberMatches(currentMatches), index);
+		this->processPlayerMatches(player->getNumberMatches(this->currentMatches, this->maxMatchesPerTurn), index);
 		this->out << '\n';
 	}
 }
@@ -52,7 +52,7 @@ void Matches::printGameInfo()
 
 void Matches::processPlayerMatches(unsigned numMatches, std::size_t playerIndex)
 {
-	unsigned removedMatches = std::min(numMatches, this->currentMatches);
+	auto removedMatches = std::min(numMatches, this->currentMatches);
 	this->currentMatches -= removedMatches;
 
 	this->out << fmt::format("{} removed {} matches, leaving {} matches\n", this->describePlayer(playerIndex), removedMatches, this->currentMatches);

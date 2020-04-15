@@ -15,6 +15,8 @@ add_executable(EpitechMatchesGame
     Player/HumanPlayer.hpp
     Player/RandomAIPlayer.cpp
     Player/RandomAIPlayer.hpp
+    Player/PerfectAIPlayer.cpp
+    Player/PerfectAIPlayer.hpp
     Helpers/GetIntegerInput.hpp)
 
 find_package(fmt)

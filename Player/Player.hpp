@@ -10,7 +10,7 @@ public:
 	{}
 
 	virtual const char *describeSelf() const = 0;
-	virtual unsigned getNumberMatches(unsigned currentMatches) = 0;
+	virtual unsigned getNumberMatches(unsigned currentMatches, unsigned maxMatches) = 0;
 };
 
 #endif // PLAYER_H

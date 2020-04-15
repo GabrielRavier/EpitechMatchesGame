@@ -12,7 +12,7 @@ public:
 	RandomAIPlayer();
 
 	virtual const char *describeSelf() const override;
-	virtual unsigned getNumberMatches(unsigned currentMatches) override;
+	virtual unsigned getNumberMatches(unsigned currentMatches, unsigned maxMatches) override;
 };
 
 #endif // RANDOMAIPLAYER_HPP

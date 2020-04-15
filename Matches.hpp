@@ -18,6 +18,7 @@ class Matches
 	};
 
 	unsigned currentMatches;
+	unsigned maxMatchesPerTurn;
 	std::ostream& out;
 	Result result;
 	std::vector<std::unique_ptr<Player>> players;
@@ -31,7 +32,7 @@ class Matches
 	std::string describePlayer(size_t playerIndex);
 
 public:
-	Matches(unsigned paramMatches, std::ostream& paramOut);
+	Matches(unsigned paramMatches, unsigned paramMaxMatchesPerTurn, std::ostream& paramOut);
 
 	void play();
 	void addPlayer(std::unique_ptr<Player>&& player);
