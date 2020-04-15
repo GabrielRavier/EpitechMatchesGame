@@ -32,6 +32,7 @@ void Matches::mainLoop()
 
 void Matches::doTurn()
 {
+	this->out << '\n';
 	this->printGameInfo();
 	for (auto [player, index] : enumerate(this->players))
 	{
@@ -40,6 +41,7 @@ void Matches::doTurn()
 
 		this->out << fmt::format("It's {}'s turn\n", this->describePlayer(index));
 		this->processPlayerMatches(player->getNumberMatches(currentMatches), index);
+		this->out << '\n';
 	}
 }
 
@@ -48,10 +50,12 @@ void Matches::printGameInfo()
 	this->out << fmt::format("There are {} matches left\n", this->currentMatches);
 }
 
-void Matches::processPlayerMatches(unsigned int numMatches, std::size_t playerIndex)
+void Matches::processPlayerMatches(unsigned numMatches, std::size_t playerIndex)
 {
-	numMatches = std::min(numMatches, this->currentMatches);
-	this->currentMatches -= numMatches;
+	unsigned removedMatches = std::min(numMatches, this->currentMatches);
+	this->currentMatches -= removedMatches;
+
+	this->out << fmt::format("{} removed {} matches, leaving {} matches\n", this->describePlayer(playerIndex), removedMatches, this->currentMatches);
 
 	if (this->currentMatches == 0)
 		this->result = {.isFinished = true, .winnerIndex = playerIndex};
