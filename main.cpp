@@ -34,7 +34,7 @@ static auto parseArguments(int argc, char *argv[])
 
 	if (parsedOptions.count("help"))
 	{
-		std::cout << fmt::format("{}\n", options.help());
+		std::cout << options.help();
 		exit(EXIT_SUCCESS);
 	}
 
